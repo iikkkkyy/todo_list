@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todolist/todo.dart';
+import 'package:todolist/hive_model/todo.dart';
 
 class TodoItem extends StatelessWidget {
   final Todo todo;

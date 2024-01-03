@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/create_screen.dart';
-import 'package:todolist/todo.dart';
-import 'package:todolist/todo_item.dart';
+import 'package:todolist/ui/add_todo_screen.dart';
+import 'package:todolist/hive_model/todo.dart';
+import 'package:todolist/ui/widget/todo_item.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});

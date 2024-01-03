@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/main.dart';
-import 'package:todolist/todo.dart';
+import 'package:todolist/hive_model/todo.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});
