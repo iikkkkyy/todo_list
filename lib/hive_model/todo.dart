@@ -10,14 +10,14 @@ class Todo extends HiveObject {
   String title;
 
   @HiveField(2)
-  int dateTime;
+  String date;
 
   @HiveField(3)
   bool isDone;
 
   Todo({
     required this.title,
-    required this.dateTime,
+    required this.date,
     this.isDone = false
   });
 }
