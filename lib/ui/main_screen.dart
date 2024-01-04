@@ -14,6 +14,11 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
+
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +29,35 @@ class _ListScreenState extends State<ListScreen> {
         children: [
           Center(
             child: TableCalendar(
+              headerStyle: const HeaderStyle(
+                formatButtonVisible: true
+              ),
+              calendarBuilders: CalendarBuilders(),
               firstDay: DateTime.utc(2010, 10, 16), // 달력 전체의 시작 날짜
               lastDay: DateTime.utc(2030, 3, 14), // 달력 전체의 마지막 날짜
-              focusedDay: DateTime.now(), // 달력에서 선택될 날짜
+              focusedDay: DateTime.now(),
+              selectedDayPredicate: (day) {
+                return isSameDay(_selectedDay, day);
+              },
+              onDaySelected: (selectedDay, focusedDay) {
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay; // update `_focusedDay` here as well
+                });
+              },
+              onFormatChanged: (format) {
+                if (_calendarFormat != format) {
+                  // Call `setState()` when updating calendar format
+                  setState(() {
+                    _calendarFormat = format;
+                  });
+                }
+              },
+              onPageChanged: (focusedDay) {
+                // No need to call `setState()` here
+                _focusedDay = focusedDay;
+              },
+              // 달력에서 선택될 날짜
             ),
           ),
           const SizedBox(width: 10,),
