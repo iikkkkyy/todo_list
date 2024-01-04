@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todolist/main.dart';
 import 'package:todolist/hive_model/todo.dart';
 
@@ -26,9 +27,10 @@ class _CreateScreenState extends State<CreateScreen> {
         actions: [
           IconButton(
             onPressed: () async {
+              print(DateTime.now().day);
               await todos.add(Todo(
                 title: _textController.text,
-                dateTime: DateTime.now().millisecondsSinceEpoch,
+                date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
               ));
 
               if (mounted) {
