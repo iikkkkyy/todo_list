@@ -16,7 +16,7 @@ class TodoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(todo.dateTime);
+    print(todo.date);
     return ListTile(
       onTap: () {
         onTap(todo);
@@ -29,8 +29,7 @@ class TodoItem extends StatelessWidget {
         style: TextStyle(color: todo.isDone ? Colors.grey : Colors.black),
       ),
       subtitle: Text(
-          DateFormat.yMMMMd()
-              .format(DateTime.fromMillisecondsSinceEpoch(todo.dateTime)),
+          todo.date,
           style: TextStyle(color: todo.isDone ? Colors.grey : Colors.black)),
       trailing: todo.isDone
           ? GestureDetector(
